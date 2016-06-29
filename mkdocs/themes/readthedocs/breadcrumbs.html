@@ -6,11 +6,11 @@
         {% if doc.link %}
           <li><a href="{{ doc.link|e }}">{{ doc.title }}</a> &raquo;</li>
         {% else %}
-          <li>{{ doc.title }} &raquo;</li>
+          <li><a href="{{ doc.children[0].url}}">{{ doc.title }}</a> &raquo;</li>
         {% endif %}
       {% endfor %}
     {% endif %}
-    {% if current_page %}<li>{{ current_page.title }}</li>{% endif %}
+    {% if current_page %}<li><a href="{{ current_page.url }}">{{ current_page.title }}</a></li>{% endif %}
     <li class="wy-breadcrumbs-aside">
       {% if repo_url %}
         {% if repo_name == 'GitHub' %}

@@ -14,8 +14,7 @@ h3, h4, h5, h6 {
     font-weight: 300
 }
 
-ul {
-    list-style-type:none;
+.subnavli {
 }
 
 /*
@@ -38,19 +37,45 @@ li .toctree-l1{
     display: none;
 }
 
+.nav{
+  list-style-type: none;
+}
+
 .subnavli{
   background: #EEEEEE;
   width: 200px;
 }
 
-.subnavli a{
-  font-size: 14px;
+.wy-menu-vertical ul .subnavli_single a{
+  font-size: 16px;
+  padding-left: 16px;
+}
+
+.wy-menu-vertical ul .subnavli a{
+  font-size: 16px;
+  padding-left: 16px;
 }
   
 
 .wy-menu-vertical ul li{
   background: #EEEEEE;
   width: 200px;
+}
+
+.header{
+  margin: 0px;
+}
+
+#home-url{
+  padding: 10px;
+}
+
+#home-url a{
+  font-size: 30px;
+}
+
+#rtd-search-form{
+
 }
 
 /*
@@ -81,6 +106,16 @@ code {
     white-space: pre;
 }
 
+pre>code:before, .method-declaration code:before{
+  content: "";
+}
+
+pre code{
+  color: #111111;
+}
+pre>code{
+  border-left: 0px;
+}
 /*
  * Wrap inline code samples otherwise they shoot of the side and
  * can't be read at all.
