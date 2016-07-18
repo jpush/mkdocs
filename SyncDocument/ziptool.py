@@ -3,6 +3,8 @@ import os
 import zipfile
 from githubdownload import GithubDownload
 from repositories import repositories
+import dirconfig
+import shutil
 
 class ZipTool():
     def zip_download(self,zip_dir,release_version,url):
@@ -12,15 +14,10 @@ class ZipTool():
             code.write(download_response.content)
 
     def unzip_file(self,name,release_version):
-        cwd = os.getcwd()
-        filename = os.path.join(cwd, name)
+        filename = os.path.join(dirconfig.conf["zip"], name)
         filename = os.path.join(filename, release_version+".zip")
         print (filename)
-        '''
-        if (not os.path.exists("data")):
-            os.mkdir("data")
-        '''
-        filedir = os.path.join(cwd, name)
+        filedir = os.path.join(dirconfig.conf["zip"], name)
         filedir = os.path.join(filedir, 'data/')
 
         fz = zipfile.ZipFile(filename)
@@ -30,6 +27,45 @@ class ZipTool():
                 fz.extract(file, filedir)
         else:
             print('This file is not zip file')
+
+
+    def replace_readme(self,name,release_version):
+        file_dir = os.path.join(dirconfig.conf["zip"], name)
+        file_dir = os.path.join(file_dir, 'data')
+        release_dir=name+"-"+release_version[1:]
+        file_dir=os.path.join(file_dir, release_dir)
+        file_dir=os.path.join(file_dir, "README.md")
+        print file_dir
+        readme_dir=dirconfig.conf["jpush"]["server"][name]
+        print readme_dir
+        print shutil.copyfile(file_dir,readme_dir)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

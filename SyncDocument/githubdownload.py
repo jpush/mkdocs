@@ -1,6 +1,8 @@
 import requests
 import os
 from bs4 import BeautifulSoup
+import dirconfig
+
 class GithubDownload():
     def __init__(self):
         pass
@@ -38,11 +40,10 @@ class GithubDownload():
 
     def get_dir(self,name,version):
         print os.path.exists(name)
-        cwd = os.getcwd()
-        print cwd
-        file_dir = os.path.join(cwd, name)
+        file_dir = os.path.join(dirconfig.conf["zip"], name)
         print file_dir
         zip_name = version + ".zip"
         zip_dir = os.path.join(file_dir, zip_name)
+        print zip_dir
         return zip_dir
 
