@@ -20,4 +20,8 @@ conf["server"]=os.path.join(conf["jpush_docs"],"server")
 conf["jpush"]["server"]={}
 conf["jpush"]["server"]["jpush-api-csharp-client"]=os.path.join(conf["server"],"csharp_sdk.md")
 conf["jpush"]["server"]["jpush-api-python-client"]=os.path.join(conf["server"],"python_sdk.md")
+conf["jpush"]["server"]["jpush-api-php-client"]=os.path.join(conf["server"],"php_sdk.md")
+conf["jpush"]["server"]["jpush-api-nodejs-client"]=os.path.join(conf["server"],"nodejs_sdk.md")
+conf["jpush"]["server"]["jpush-api-java-client"]=os.path.join(conf["server"],"java_sdk.md")
+conf["jpush"]["server"]["jpush-api-ruby-client"]=os.path.join(conf["server"],"ruby_sdk.md")
 
