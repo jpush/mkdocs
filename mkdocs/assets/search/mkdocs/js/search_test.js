@@ -1,10 +1,27 @@
-require([
-    base_url + '/mkdocs/js/lunr.min.js',
-    base_url + '/mkdocs/js/mustache.min.js',
-    'text!search-results-template.mustache',
-    'text!../search_index.json',
-], function (lunr, Mustache, results_template, data) {
-   "use strict";
+require.config({
+    baseUrl: base_url,
+    paths: {
+        'jquery': '/mkdocs/js/jquery-1.10.2.min',
+        'bootstrap': '/mkdocs/js/bootstrap-3.0.3.min',
+        'mustache': '/mkdocs/js/mustache.min',
+        'prettyprint': '/mkdocs/js/prettify-1.0.min',
+        'highlight': '/mkdocs/js/highlight.pack',
+        'base': '/mkdocs/js/base',
+        'lunr': '/mkdocs/js/lunr-0.5.12.min',
+	'text': '/mkdocs/js/text',
+    },
+    shim: {
+        "bootstrap" : {
+            deps : ["jquery"]
+        },
+        "base" : {
+            deps : ["jquery"]
+        }
+    }
+});
+
+require(['jquery','mustache','lunr','text!search-results-template.mustache','text!../search_index.json','text','bootstrap', 'prettyprint', 'highlight', 'base'], function($, Mustache, lunr, results_template, data) {
+    "use strict";
 
     function getSearchTerm()
     {
@@ -58,7 +75,7 @@ require([
                 doc.summary = doc.text.substring(0, 200);
                 var html = Mustache.to_html(results_template, doc);
                 search_results.insertAdjacentHTML('beforeend', html);
-		jQuery('#mkdocs-search-results').show();
+                jQuery('#mkdocs-search-results').show();
                 jQuery('#conent').hide();
             }
         } else {
